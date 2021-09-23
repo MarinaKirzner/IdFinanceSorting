@@ -14,16 +14,9 @@ public class Sorting{
         scanner.close();
 
         int[] numbersInt = new int[numbersString.length];
-        double[] numbersDouble = new double[numbersString.length];
 
-        //Перевод строкового массива в целочисленный массив
-        for (int i = 0; i < numbersString.length; i++) {
-            if (numbersString[i].contains(".")){
-                numbersDouble[i] = Double.parseDouble(numbersString[i]);
-                numbersInt[i] = (int) Math.round(numbersDouble[i]);
-            }
-            else numbersInt[i] = Integer.parseInt(numbersString[i]);
-        }
+        //Округляем дробные цисла и записываем все в целочисленный массив
+        RoundingNumbers.rounding(numbersString, numbersInt);
 
         //Создаем файлы для записи отсортированных чисел
         File evenNumbers = new File("evenNumbers");
@@ -32,7 +25,8 @@ public class Sorting{
         PrintWriter evenNumbersWriter = new PrintWriter(evenNumbers);
         PrintWriter oddNumbersWriter = new PrintWriter(oddNumbers);
 
-        EvenOdd.sorting(evenNumbersWriter, oddNumbersWriter, numbersInt);
+        //Сортируем на четные/нечетные
+        EvenOdd.sortingEvenOdd(evenNumbersWriter, oddNumbersWriter, numbersInt);
 
         evenNumbersWriter.close();
         oddNumbersWriter.close();
