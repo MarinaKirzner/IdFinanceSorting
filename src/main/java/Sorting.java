@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sorting{
@@ -33,12 +32,7 @@ public class Sorting{
         PrintWriter evenNumbersWriter = new PrintWriter(evenNumbers);
         PrintWriter oddNumbersWriter = new PrintWriter(oddNumbers);
 
-        //Проверка на четные/нечетные
-        for (int i = 0; i < numbersInt.length; i++) {
-            if (numbersInt[i] % 2 == 0) {
-                evenNumbersWriter.println(numbersInt[i]);
-            } else oddNumbersWriter.println(numbersInt[i]);
-        }
+        EvenOdd.sorting(evenNumbersWriter, oddNumbersWriter, numbersInt);
 
         evenNumbersWriter.close();
         oddNumbersWriter.close();
