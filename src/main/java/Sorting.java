@@ -13,9 +13,8 @@ public class Sorting{
         String[] numbersString = line.split("\\,");
         scanner.close();
 
-        int[] numbersInt = new int[numbersString.length];
-
         //Округляем дробные цисла и записываем все в целочисленный массив
+        int[] numbersInt = new int[numbersString.length];
         RoundingNumbers.rounding(numbersString, numbersInt);
 
         //Создаем файлы для записи отсортированных чисел
