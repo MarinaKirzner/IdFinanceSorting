@@ -1,12 +1,12 @@
-import java.io.File;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class EvenOdd {
-    public static void sortingEvenOdd(PrintWriter even, PrintWriter odd, int[] mass) {
-        for (int i = 0; i < mass.length; i++) {
-            if (mass[i] % 2 == 0) {
-                even.println(mass[i]);
-            } else odd.println(mass[i]);
+
+    public void sorting(ArrayList<Integer> mass, ArrayList<Integer> even, ArrayList<Integer> odd) {
+        for (int i = 0; i < mass.size(); i++) {
+            if (mass.get(i) % 2 == 0) {
+                even.add(mass.get(i));
+            } else odd.add(mass.get(i));
         }
 
     }

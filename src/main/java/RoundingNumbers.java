@@ -1,6 +1,6 @@
 public class RoundingNumbers {
-    public static void rounding(String[] massString, int[] massInt) {
-       // int[] massInt = new int[massString.length];
+
+    public void rounding(String[] massString, int[] massInt) {
         double[] massDouble = new double[massString.length];
 
         for (int i = 0; i < massString.length; i++) {
@@ -11,4 +11,5 @@ public class RoundingNumbers {
             else massInt[i] = Integer.parseInt(massString[i]);
         }
     }
+
 }
