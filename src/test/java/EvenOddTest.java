@@ -15,6 +15,8 @@ public class EvenOddTest {
         numbers.add(4);
         numbers.add(5);
         numbers.add(6);
+        numbers.add(-1);
+
 
         ArrayList<Integer> numbersEven = new ArrayList<>();
         numbersEven.add(2);
@@ -25,6 +27,7 @@ public class EvenOddTest {
         numbersOdd.add(1);
         numbersOdd.add(3);
         numbersOdd.add(5);
+        numbersOdd.add(-1);
 
         EvenOdd evenOdd = new EvenOdd();
         ArrayList<Integer> testEvenSorting = new ArrayList<>();
