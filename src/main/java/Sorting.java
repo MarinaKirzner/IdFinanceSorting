@@ -33,18 +33,12 @@ public class Sorting{
         //Сортируем
         evenOdd.sorting(numbersListInt, evenSorting, oddSorting);
 
-        //Создаем файлы для записи отсортированных чисел
+        //Записываем в файлы
         File evenNumbers = new File("src\\main\\resources\\dataForProgramm\\evenNumbers");
         File oddNumbers = new File("src\\main\\resources\\dataForProgramm\\oddNumbers");
-        PrintWriter evenNumbersWriter = new PrintWriter(evenNumbers);
-        PrintWriter oddNumbersWriter = new PrintWriter(oddNumbers);
 
-        //Записываем в файлы
         WriteEvenOddNumbers writeEvenOddNumbers = new WriteEvenOddNumbers();
-        writeEvenOddNumbers.writeNumbers(evenNumbersWriter, oddNumbersWriter, evenSorting, oddSorting);
-
-        evenNumbersWriter.close();
-        oddNumbersWriter.close();
+        writeEvenOddNumbers.writeNumbers(evenNumbers, oddNumbers, evenSorting, oddSorting);
 
     }
 
