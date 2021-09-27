@@ -1,25 +1,20 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 public class WriteEvenOddNumbers {
 
-    public void writeNumbers(File evenFile, File oddFile, ArrayList<Integer> evens, ArrayList<Integer> odds) throws FileNotFoundException {
-        PrintWriter evenNumbersWriter = new PrintWriter(evenFile);
-        PrintWriter oddNumbersWriter = new PrintWriter(oddFile);
+    public void writeNumber(File file, List<Integer> mass) throws FileNotFoundException {
+        PrintWriter numbersWriter = new PrintWriter(file);
 
         //Записываем четные
-        for (Integer even : evens) {
-            evenNumbersWriter.println(even);
+        for (Integer number : mass) {
+            numbersWriter.println(number);
         }
 
-        //Записываем нечетные
-        for (Integer odd : odds) {
-            oddNumbersWriter.println(odd);
-        }
-
-        evenNumbersWriter.close();
-        oddNumbersWriter.close();
+        numbersWriter.close();
     }
+
+
 }

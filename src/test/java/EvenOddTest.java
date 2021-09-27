@@ -8,31 +8,15 @@ public class EvenOddTest {
 
     @Test
     public void testSortingEvenOdd() throws FileNotFoundException {
-        ArrayList<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
-        numbers.add(6);
-        numbers.add(-1);
-
-
-        ArrayList<Integer> numbersEven = new ArrayList<>();
-        numbersEven.add(2);
-        numbersEven.add(4);
-        numbersEven.add(6);
-
-        ArrayList<Integer> numbersOdd = new ArrayList<>();
-        numbersOdd.add(1);
-        numbersOdd.add(3);
-        numbersOdd.add(5);
-        numbersOdd.add(-1);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, -1);
+        List<Integer> numbersEven = Arrays.asList(2, 4, 6);
+        List<Integer> numbersOdd = Arrays.asList(1, 3, 5, -1);
 
         EvenOdd evenOdd = new EvenOdd();
         ArrayList<Integer> testEvenSorting = new ArrayList<>();
         ArrayList<Integer> testOddSorting = new ArrayList<>();
-        evenOdd.sorting(numbers, testEvenSorting, testOddSorting);
+        evenOdd.sorting(numbers, testEvenSorting);
+        evenOdd.sorting(numbers, testOddSorting);
 
         Assert.assertEquals(testEvenSorting, numbersEven);
         Assert.assertEquals(testOddSorting, numbersOdd);

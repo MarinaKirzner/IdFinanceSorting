@@ -1,15 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class RoundingNumbers {
 
-    public void rounding(String[] massString, int[] massInt) {
-        double[] massDouble = new double[massString.length];
+    private static final String DOUBLE_DELIMITER = "." ;
 
-        for (int i = 0; i < massString.length; i++) {
-            if (massString[i].contains(".")){
-                massDouble[i] = Double.parseDouble(massString[i]);
-                massInt[i] = (int) Math.round(massDouble[i]);
-            }
-            else massInt[i] = Integer.parseInt(massString[i]);
+    public List<Integer> roundListNumbers(List<String> numbers, List<Integer> roundedNumbers) {
+        for (String number : numbers) {
+            int convertedNumber = convertStringToInt(number);
+            roundedNumbers.add(convertedNumber);
         }
+        return roundedNumbers;
     }
+
+    private Integer convertStringToInt(String number) {
+        int valueToAdd;
+        if (isDouble(number)) {
+            double convertedToDouble = Double.parseDouble(number);
+            valueToAdd = (int) Math.round(convertedToDouble);
+        } else {
+            valueToAdd = Integer.parseInt(number);
+        }
+        return valueToAdd;
+    }
+
+    private boolean isDouble(String number) {
+        return number.contains(DOUBLE_DELIMITER);
+    }
+
 
 }

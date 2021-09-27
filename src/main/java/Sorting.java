@@ -1,44 +1,45 @@
+import com.beust.jcommander.internal.Lists;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Sorting{
 
+    public static final String FILE_PATH = "src\\main\\resources\\dataForProgramm\\";
+
     public static void main(String[] args) throws FileNotFoundException {
         //Считываем данные из файла
-        File dataForSorting = new File("src\\main\\resources\\dataForProgramm\\data");
+        File dataForSorting = new File(FILE_PATH + "data");
         Scanner scanner = new Scanner(dataForSorting);
         String line = scanner.nextLine();
         String[] numbersString = line.split("\\,");
+        List<String> numbersStringList = Arrays.asList(numbersString);
         scanner.close();
 
         //Округляем дробные цисла и записываем все в целочисленный массив
         RoundingNumbers roundingNumbers = new RoundingNumbers();
-        int[] numbersInt = new int[numbersString.length];
-        roundingNumbers.rounding(numbersString, numbersInt);
+        List<Integer> roundingIntList = new ArrayList<>();
+        roundingNumbers.roundListNumbers(numbersStringList, roundingIntList);
 
         //Сортируем на четные/нечетные
         EvenOdd evenOdd = new EvenOdd();
-        ArrayList<Integer> evenSorting = new ArrayList<>();
-        ArrayList<Integer> oddSorting = new ArrayList<>();
+        List<Integer> evenSorting = new ArrayList<>();
+        List<Integer> oddSorting = new ArrayList<>();
 
-        //Переводим целочисленный массив в список для дальнейшей сортировки
-        ArrayList<Integer> numbersListInt = new ArrayList<>();
-        for (int numbers : numbersInt) {
-            numbersListInt.add(numbers);
-        }
-
-        //Сортируем
-        evenOdd.sorting(numbersListInt, evenSorting, oddSorting);
+        evenOdd.sorting(roundingIntList, evenSorting);
+        evenOdd.sorting(roundingIntList, oddSorting);
 
         //Записываем в файлы
-        File evenNumbers = new File("src\\main\\resources\\dataForProgramm\\evenNumbers");
-        File oddNumbers = new File("src\\main\\resources\\dataForProgramm\\oddNumbers");
+        File evenNumbers = new File(FILE_PATH + "evenNumbers");
+        File oddNumbers = new File(FILE_PATH + "oddNumbers");
 
         WriteEvenOddNumbers writeEvenOddNumbers = new WriteEvenOddNumbers();
-        writeEvenOddNumbers.writeNumbers(evenNumbers, oddNumbers, evenSorting, oddSorting);
+        writeEvenOddNumbers.writeNumber(evenNumbers, evenSorting);
+        writeEvenOddNumbers.writeNumber(oddNumbers, oddSorting);
 
     }
 
